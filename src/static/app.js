@@ -29,11 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
             <strong>Participants:</strong>
             <ul class="participants-list">
               ${details.participants && details.participants.length > 0
-                ? details.participants.map(email => `<li class="participant-item">${email}</li>`).join("")
+                ? details.participants.map(email => `
+                    <li class="participant-item">
+                      <span class="participant-email">${email}</span>
+                      <button class="delete-participant" title="Remove participant" data-activity="${name}" data-email="${email}">&times;</button>
+                    </li>`).join("")
                 : '<li class="participant-item empty">No participants yet.</li>'}
             </ul>
           </div>
         `;
+
+        // Add event listeners for delete buttons
+        const deleteButtons = activityCard.querySelectorAll('.delete-participant');
+        deleteButtons.forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const activityName = btn.getAttribute('data-activity');
+            const email = btn.getAttribute('data-email');
+            // TODO: Implement API call to unregister participant
+            alert(`Unregister ${email} from ${activityName}`);
+          });
+        });
 
         activitiesList.appendChild(activityCard);
 
@@ -70,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.textContent = result.message;
         messageDiv.className = "success";
         signupForm.reset();
+        fetchActivities(); // Refresh activities list to show new participant
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
