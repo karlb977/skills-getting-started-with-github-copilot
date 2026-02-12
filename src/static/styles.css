@@ -65,6 +65,45 @@ section h3 {
   background-color: #f9f9f9;
 }
 
+.participants-section {
+  margin: 1rem 0 1.5rem 0;
+  background: #f7f7fa;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.participants-section strong {
+  color: #4a4a6a;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.participants-list {
+  list-style-type: disc;
+  margin: 0.5rem 0 0 1.2rem;
+  padding: 0;
+  color: #333;
+  font-size: 0.97rem;
+}
+
+.participant-item {
+  margin-bottom: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: #e9e9f3;
+  color: #2a2a4a;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.2s;
+}
+
+.participant-item.empty {
+  background: transparent;
+  color: #888;
+  font-style: italic;
+}
+
 .activity-card h4 {
   margin-bottom: 10px;
   color: #0066cc;
